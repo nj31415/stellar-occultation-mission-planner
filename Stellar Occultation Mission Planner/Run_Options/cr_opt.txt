@@ -1,0 +1,86 @@
+%% Occultation_Model run options
+% Specifies simulation parameters and options
+% Simulation run name. Used to generate save file names.
+run_name = code_review;
+
+%% Simulation boolean controls
+% load_data controls whether data is loaded from a previous save file or
+% extracted from STK. If true, an occultation_model data file must be 
+% specified. If false, an STK scenario file must be specified
+load_data = false;
+
+% save_data controls whether to save data from the simulation run
+% automatically. Can save manually when running program.
+save_data = false;
+
+% import_stars controls whether to import stars into the STK simulation or not.
+% If load_data is set to true, this value is ignored.
+import_stars = true;
+
+% import_sats controls whether to import sats into the STK simulation or not.
+% If load_data is set to true, this value is ignored.
+import_sats = true;
+
+% truncate_data controls whether to truncate the occultation data to the region
+% of interest. If set to true, all data outside the region of interest is
+% removed and not saved. If set to false, all occultation data is saved, but
+% plots will still only show the specified region of interest.
+truncate_data = true;
+
+% plot_data controls whether to display the outputs of the simulation.
+plot_data = true;
+
+%% File names.
+% Will search the folders specified in config.txt for the files listed below.
+stk_scenario_file = dev_scenario\dev_scenario.sc;
+star_data_file = cr_star.xlsx;
+sat_data_file = cr_sat.xlsx;
+load_data_file = 20230316123332_code_review.mat;
+
+%% STK scenario options
+% STK step sizes, specified in seconds
+ephem_step_size = 600;
+occ_step_size = 0.5;
+% Scenario start and stop times.
+start_time = 2020:09:22:00:00:00.000;
+stop_time = 2021:03:21:00:00:00.000;
+
+% Occultation analysis period times. Leave blank to use the scenario start and
+% stop times.
+oa_start_time = 2020:11:01:00:00:00.000;
+oa_stop_time = 2021:03:21:00:00:00.000;
+% Propagator selection. TwoBody, J2, and HPOP are currently enabled.
+propagator = HPOP;
+
+% List of satellite names to analyze. Enter as a comma-separated list for
+% multiple satellites. Leave blank to use all satellites in the file.
+sat_names = ;
+
+% List of star names to use in the analysis. Enter as a comma-separated list 
+% for multiple stars. Leave blank to use all stars in the file. Use underscores
+% to represent spaces in the names.
+star_names = alf_Vir, alf_CMa, bet_CMa, del_Sco, alf_Leo;
+
+%% Region of interest
+% Sets geographic region of interest. Specifying a list of values seperated by 
+% commas will create multiple regions of interest. Latitude and longitude
+% specified in degrees. Longitude is specified in the range [-180, 180]. 
+% Altitude specified in km.
+lat_min = 66.56361, -90;
+lat max = 90, -66.56361;
+long_min = -180, -180;
+long_max = 180, 180;
+alt_min = 70, 70;
+alt_max = 150, 150;
+
+%% Access Constraints
+% Sets maximum angle between star and the orbit plane to be considered a valid
+% occultation. Enter in degrees.
+max_star_angle = 40;
+% Sets keep out angles for the Sun and Moon. Enter in degrees.
+min_sun_angle = 90;
+min_moon_angle = 45;
+
+%% HPOP options
+% Sets options for HPOP propagator
+atmos_model = eMSIS00;

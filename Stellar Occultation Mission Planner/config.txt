@@ -1,0 +1,12 @@
+% Occultation_Model_V2 Options
+save_folder = Simulation_Data;
+run_options_folder = Run_Options;
+star_data_folder = Star_Data;
+sat_data_folder = Sat_Data;
+
+stk_version = 12;
+stk_scenario_folder = \STK_Scenarios;
+stk_visible = false;
+
+% Specify run file to use.
+run_select = cr_opt.txt;
